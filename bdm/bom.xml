@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<businessObjectModel xmlns="http://documentation.bonitasoft.com/bdm-xml-schema/1.0" modelVersion="1.0">
+    <businessObjects>
+        <businessObject qualifiedName="com.company.codification.dmodel.InstrukcijeZaKodifikaciju">
+            <fields>
+                <field type="STRING" length="255" name="instrukcija" nullable="true" collection="false"/>
+            </fields>
+            <uniqueConstraints/>
+            <queries/>
+            <indexes/>
+        </businessObject>
+        <businessObject qualifiedName="com.company.codification.dmodel.ObjavaNovogDokumenta">
+            <fields>
+                <field type="STRING" length="255" name="attribute" nullable="true" collection="false"/>
+            </fields>
+            <uniqueConstraints/>
+            <queries/>
+            <indexes/>
+        </businessObject>
+        <businessObject qualifiedName="com.company.codification.dmodel.PitanjaZaKodifikaciju">
+            <fields>
+                <field type="STRING" length="255" name="pitanje" nullable="true" collection="false"/>
+            </fields>
+            <uniqueConstraints/>
+            <queries/>
+            <indexes/>
+        </businessObject>
+        <businessObject qualifiedName="com.company.codification.dmodel.Pitanje">
+            <fields>
+                <field type="STRING" length="255" name="poruka" nullable="true" collection="true"/>
+                <field type="STRING" length="255" name="odgovor" nullable="true" collection="true"/>
+            </fields>
+            <uniqueConstraints/>
+            <queries/>
+            <indexes/>
+        </businessObject>
+        <businessObject qualifiedName="com.company.codification.dmodel.ZahtjevZaObjavuZakona">
+            <fields>
+                <relationField type="AGGREGATION" reference="com.company.codification.dmodel.InstrukcijeZaKodifikaciju" fetchType="LAZY" name="instrukcija" nullable="true" collection="true"/>
+                <field type="LOCALDATE" length="255" name="datumKreiranja" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="statusZahtjeva" nullable="true" collection="false"/>
+                <relationField type="AGGREGATION" reference="com.company.codification.dmodel.PitanjaZaKodifikaciju" fetchType="LAZY" name="pitanjaZaKodifikaciju" nullable="true" collection="false"/>
+            </fields>
+            <uniqueConstraints/>
+            <queries/>
+            <indexes/>
+        </businessObject>
+        <businessObject qualifiedName="com.company.model.Klijent">
+            <fields>
+                <field type="STRING" length="255" name="nazivUstanove" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="nivoUstanove" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="grad" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="postanskiBroj" nullable="true" collection="false"/>
+                <field type="INTEGER" length="255" name="brojKorisnika" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="email" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="datumKreiranja" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="statusNaloga" nullable="true" collection="false"/>
+                <field type="BOOLEAN" length="255" name="statusEmail" nullable="true" collection="false"/>
+            </fields>
+            <uniqueConstraints/>
+            <queries/>
+            <indexes/>
+        </businessObject>
+        <businessObject qualifiedName="com.company.model.ListaKomentara">
+            <fields>
+                <relationField type="AGGREGATION" reference="com.company.model.PrigovorNaPonudu" fetchType="LAZY" name="komentar" nullable="true" collection="false"/>
+                <relationField type="AGGREGATION" reference="com.company.model.PrigovorNaPonudu" fetchType="LAZY" name="noviKomentar" nullable="true" collection="false"/>
+                <relationField type="AGGREGATION" reference="com.company.model.Klijent" fetchType="LAZY" name="klijent" nullable="true" collection="false"/>
+            </fields>
+            <uniqueConstraints/>
+            <queries/>
+            <indexes/>
+        </businessObject>
+        <businessObject qualifiedName="com.company.model.Ponuda">
+            <fields>
+                <field type="STRING" length="255" name="naziv" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="cijena" nullable="true" collection="false"/>
+                <field type="BOOLEAN" length="255" name="odabranaUsluga" nullable="true" collection="false"/>
+                <relationField type="AGGREGATION" reference="com.company.model.PrigovorNaPonudu" fetchType="LAZY" name="prigovorNaPonudu" nullable="true" collection="true"/>
+                <field type="BOOLEAN" length="255" name="potvrdjenaUsluga" nullable="true" collection="false"/>
+            </fields>
+            <uniqueConstraints/>
+            <queries/>
+            <indexes/>
+        </businessObject>
+        <businessObject qualifiedName="com.company.model.PrigovorNaPonudu">
+            <fields>
+                <field type="STRING" length="255" name="komentar" nullable="true" collection="false"/>
+            </fields>
+            <uniqueConstraints/>
+            <queries/>
+            <indexes/>
+        </businessObject>
+        <businessObject qualifiedName="com.company.model.StatusZaposlenog">
+            <description>Ovo je pomocna tabela gdje smjestamo usere i njihove statuse posto ne mogu da iscupam iz organizacije</description>
+            <fields>
+                <field type="STRING" length="255" name="username" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="status" nullable="true" collection="false"/>
+            </fields>
+            <uniqueConstraints/>
+            <queries/>
+            <indexes/>
+        </businessObject>
+        <businessObject qualifiedName="com.company.model.Ugovor">
+            <fields>
+                <field type="STRING" length="255" name="zbirnaCijenaUsluga" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="digitalniPotpisKlijenta" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="digitalniPotpisAgencije" nullable="true" collection="false"/>
+                <field type="BOOLEAN" length="255" name="agencijaNeObjavjestavaIzmjene" nullable="true" collection="false">
+                    <description>Ukoliko dodje do izmjene propisa agencija moze a ne mora da obavjesti klijenta</description>
+                </field>
+                <field type="BOOLEAN" length="255" name="obavjestenjeNaMailNovosti" nullable="true" collection="false">
+                    <description>Neke novosti ako se dese agencija moze a ne mora putem mejla da obavjesti klijenta</description>
+                </field>
+                <field type="BOOLEAN" length="255" name="objavuDokumentaBezRevizije" nullable="true" collection="false">
+                    <description>moze da objavi dokumente bez revizije klijenta</description>
+                </field>
+                <field type="STRING" length="255" name="brojRadnihDanaPriRaskiduUgovoraAgencija" nullable="true" collection="false">
+                    <description>agencija moze da zada koliko dana prije mora oda obavjesti o raskidu ugovora</description>
+                </field>
+                <field type="STRING" length="255" name="brojRadnihDanaPriRaskiduUgovoraKlijent" nullable="true" collection="false">
+                    <description>klijent je duzan da obavjesti agenciju o raskidu ugovora na odredjen broj dana</description>
+                </field>
+            </fields>
+            <uniqueConstraints/>
+            <queries/>
+            <indexes/>
+        </businessObject>
+        <businessObject qualifiedName="com.company.model.ZahtjevZaRegistraciju">
+            <fields>
+                <field type="STRING" length="255" name="datumKreiranja" nullable="true" collection="false"/>
+                <relationField type="AGGREGATION" reference="com.company.model.Ponuda" fetchType="LAZY" name="ponuda" nullable="true" collection="true"/>
+                <field type="STRING" length="255" name="status" nullable="true" collection="false"/>
+                <relationField type="AGGREGATION" reference="com.company.model.Klijent" fetchType="LAZY" name="klijent" nullable="true" collection="false"/>
+                <field type="LONG" length="255" name="zaposleni" nullable="true" collection="false"/>
+                <relationField type="AGGREGATION" reference="com.company.model.Ugovor" fetchType="LAZY" name="ugovor" nullable="true" collection="false"/>
+            </fields>
+            <uniqueConstraints/>
+            <queries/>
+            <indexes/>
+        </businessObject>
+        <businessObject qualifiedName="com.company.model.Zaposleni">
+            <fields>
+                <field type="STRING" length="255" name="ime" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="prezime" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="email" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="sifra" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="pozicija" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="statuZaposlenog" nullable="true" collection="false">
+                    <description>Ovaj status prestavlja stanje u kom se zaposleni nalazi, da li je na godisnjem odmoru, na nekom tasku ili je slobodan</description>
+                </field>
+            </fields>
+            <uniqueConstraints/>
+            <queries/>
+            <indexes/>
+        </businessObject>
+        <businessObject qualifiedName="com.company.prekid.model1.Anketa">
+            <fields>
+                <field type="STRING" length="255" name="zaposleni" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="zastoJeIstekaoRok" nullable="true" collection="false"/>
+                <field type="LOCALDATE" length="255" name="daLiProduzitiRok" nullable="true" collection="false"/>
+                <relationField type="AGGREGATION" reference="com.company.model.Klijent" fetchType="LAZY" name="klijent" nullable="true" collection="false"/>
+                <field type="STRING" length="255" name="statusAnkete" nullable="true" collection="false"/>
+            </fields>
+            <uniqueConstraints/>
+            <queries/>
+            <indexes/>
+        </businessObject>
+    </businessObjects>
+</businessObjectModel>

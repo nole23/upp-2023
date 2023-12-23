@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ASCII"?>
+<organization:Organization xmlns:organization="http://documentation.bonitasoft.com/organization-xml-schema/1.1">
+  <customUserInfoDefinitions>
+    <customUserInfoDefinition>
+      <name>statusZaposlenog</name>
+      <description></description>
+    </customUserInfoDefinition>
+  </customUserInfoDefinitions>
+  <users>
+    <user userName="novica">
+      <firstName>Novica</firstName>
+      <lastName>Novica</lastName>
+      <personalData/>
+      <professionalData/>
+      <password encrypted="false">bpm</password>
+      <customUserInfoValues>
+        <customUserInfoValue>
+          <name>statusZaposlenog</name>
+          <value></value>
+        </customUserInfoValue>
+      </customUserInfoValues>
+    </user>
+    <user userName="Mitar">
+      <firstName>Mitar</firstName>
+      <lastName>Miric</lastName>
+      <manager>petar</manager>
+      <personalData/>
+      <professionalData/>
+      <password encrypted="false">bpm</password>
+      <customUserInfoValues>
+        <customUserInfoValue>
+          <name>statusZaposlenog</name>
+          <value></value>
+        </customUserInfoValue>
+      </customUserInfoValues>
+    </user>
+    <user userName="mira">
+      <firstName>Mira</firstName>
+      <lastName>Savic</lastName>
+      <manager>petar</manager>
+      <personalData/>
+      <professionalData/>
+      <password encrypted="false">bpm</password>
+      <customUserInfoValues>
+        <customUserInfoValue>
+          <name>statusZaposlenog</name>
+          <value></value>
+        </customUserInfoValue>
+      </customUserInfoValues>
+    </user>
+    <user userName="dragan">
+      <firstName>Dragan</firstName>
+      <lastName>Nikolic</lastName>
+      <manager>petar</manager>
+      <personalData/>
+      <professionalData/>
+      <password encrypted="false">bpm</password>
+      <customUserInfoValues>
+        <customUserInfoValue>
+          <name>statusZaposlenog</name>
+          <value></value>
+        </customUserInfoValue>
+      </customUserInfoValues>
+    </user>
+    <user userName="savo">
+      <firstName>Savo</firstName>
+      <lastName>Savic</lastName>
+      <manager>novica</manager>
+      <personalData/>
+      <professionalData/>
+      <password encrypted="false">bpm</password>
+      <customUserInfoValues>
+        <customUserInfoValue>
+          <name>statusZaposlenog</name>
+          <value></value>
+        </customUserInfoValue>
+      </customUserInfoValues>
+    </user>
+    <user userName="petar">
+      <firstName>Petar</firstName>
+      <lastName>Petrovic</lastName>
+      <manager>novica</manager>
+      <personalData/>
+      <professionalData/>
+      <password encrypted="false">bpm</password>
+      <customUserInfoValues>
+        <customUserInfoValue>
+          <name>statusZaposlenog</name>
+          <value>FREE</value>
+        </customUserInfoValue>
+      </customUserInfoValues>
+    </user>
+  </users>
+  <roles>
+    <role name="zaposlen">
+      <displayName>zaposlen</displayName>
+    </role>
+    <role name="neZaposlen">
+      <displayName>neZaposlen</displayName>
+    </role>
+    <role name="menadzer">
+      <displayName>menadzer</displayName>
+    </role>
+    <role name="direktor">
+      <displayName>direktor</displayName>
+    </role>
+    <role name="radnik">
+      <displayName>radnik</displayName>
+    </role>
+    <role name="sistem">
+      <displayName>sistem</displayName>
+    </role>
+  </roles>
+  <groups>
+    <group name="Zaposleni">
+      <displayName>Zaposleni</displayName>
+    </group>
+    <group name="Menadzer" parentPath="/Zaposleni">
+      <displayName>Menadzer</displayName>
+    </group>
+    <group name="Advokat" parentPath="/Zaposleni">
+      <displayName>Advokat</displayName>
+    </group>
+    <group name="RevizorAdvokat" parentPath="/Zaposleni">
+      <displayName>RevizorAdvokat</displayName>
+    </group>
+    <group name="Agent" parentPath="/Zaposleni">
+      <displayName>Agent</displayName>
+    </group>
+    <group name="Klijent">
+      <displayName>Klijent</displayName>
+    </group>
+    <group name="KorisnickaPodrska" parentPath="/Zaposleni">
+      <displayName>KorisnickaPodrska</displayName>
+      <description>Rola koja je nadredjena advokatima i ima sposobnost da nastavi proces</description>
+    </group>
+    <group name="Sistem">
+      <displayName>Sistem</displayName>
+    </group>
+  </groups>
+  <memberships>
+    <membership>
+      <userName>novica</userName>
+      <roleName>zaposlen</roleName>
+      <groupName>Zaposleni</groupName>
+    </membership>
+    <membership>
+      <userName>Mitar</userName>
+      <roleName>menadzer</roleName>
+      <groupName>Menadzer</groupName>
+      <groupParentPath>/Zaposleni</groupParentPath>
+    </membership>
+    <membership>
+      <userName>mira</userName>
+      <roleName>zaposlen</roleName>
+      <groupName>Advokat</groupName>
+      <groupParentPath>/Zaposleni</groupParentPath>
+    </membership>
+    <membership>
+      <userName>dragan</userName>
+      <roleName>zaposlen</roleName>
+      <groupName>RevizorAdvokat</groupName>
+      <groupParentPath>/Zaposleni</groupParentPath>
+    </membership>
+    <membership>
+      <userName>savo</userName>
+      <roleName>neZaposlen</roleName>
+      <groupName>Klijent</groupName>
+    </membership>
+    <membership>
+      <userName>petar</userName>
+      <roleName>radnik</roleName>
+      <groupName>Agent</groupName>
+      <groupParentPath>/Zaposleni</groupParentPath>
+    </membership>
+  </memberships>
+</organization:Organization>
